@@ -80,9 +80,19 @@ async function execute(db) {
               rua = new.rua,
               nro = new.nro,
               bairro = new.bairro
-            WHERE cod_doador = new.cod_doador
+              WHERE cod_doador = new.cod_doador
               AND endereco_padrao = 1;
           END;
+  
+
+        CREATE PROCEDURE addess_doador_doacao()
+          BEGIN
+            SELECT doador.rua, doador.nro, doador.bairro FROM doador 
+            INNER JOIN doacao on doacao.rua = doador.rua AND doacao.nro = doador.nro AND 
+            doacao.bairro = doador.bairro;
+          END //
+
+        
   `)
 }
 
